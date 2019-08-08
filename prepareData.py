@@ -42,7 +42,3 @@ def preprocessLayer():
 				else:
 					pixdata[x, y] = (255, 255, 255, 255)
 		img.save('data/JOSM/train/label/' + image_path,'PNG')
-
-cropImages = cropImages()
-preprocessImage = preprocessImage()
-preprocessLayer = preprocessLayer()
