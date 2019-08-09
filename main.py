@@ -14,13 +14,18 @@ data_gen_args = dict(rotation_range=0.2,
 myGene = trainGenerator(2,'data/train','image','label',data_gen_args,save_to_dir = None)
 
 # train model
-model = unetNorm()
-model_checkpoint = ModelCheckpoint('unetNorm.hdf5', monitor='loss',verbose=1, save_best_only=True)
-model.fit_generator(myGene,steps_per_epoch=50,epochs=5000,callbacks=[model_checkpoint])
+def train():
+    model = unetNorm()
+    model_checkpoint = ModelCheckpoint('unetNorm.hdf5', monitor='loss',verbose=1, save_best_only=True)
+    model.fit_generator(myGene,steps_per_epoch=50,epochs=5000,callbacks=[model_checkpoint])
 
 # test model
-testGene = testGenerator("data/test")
-model = unetNorm()
-model.load_weights("unetNorm.hdf5")
-results = model.predict_generator(testGene,20,verbose=1)
-saveResult("data/result",results)
+def test():
+    testGene = testGenerator("data/test")
+    model = unetNorm()
+    model.load_weights("unetNorm_0.027_loss.hdf5")
+    results = model.predict_generator(testGene,20,verbose=1)
+    saveResult("data/result",results)
+
+if __name__ == "__main__":
+    test()
