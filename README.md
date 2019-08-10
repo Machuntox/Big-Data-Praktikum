@@ -38,6 +38,8 @@ Loss function for the training is basically just a binary crossentropy.
 3. train model
 4. test model
 
+or just run everything on google colab: https://colab.research.google.com/drive/19kzjxha2HJBSm89leIJYIFIlyOlvD57H
+
 ### Dependencies
 
 This tutorial depends on the following libraries:
