@@ -8,9 +8,7 @@ The architecture was inspired by [U-Net: Convolutional Networks for Biomedical I
 
 ### Data
 
-The original dataset is from [isbi challenge](http://brainiac2.mit.edu/isbi_challenge/), and I've downloaded it and done the pre-processing.
-
-You can find it in folder data/membrane.
+The pictures are satelite images from Open Stree Map. You can find the raw images in the imageRaw and the raw labels in the labelRaw folder. After preprocessing, the images are in the image and the labels in the label folder.
 
 ### Data augmentation
 
@@ -25,14 +23,8 @@ See dataPrepare.ipynb and data.py for detail.
 
 This deep neural network is implemented with Keras functional API, which makes it extremely easy to experiment with different interesting architectures.
 
-Output from the network is a 512*512 which represents mask that should be learned. Sigmoid activation function
+Output from the network is a 256*256 which represents mask that should be learned. Sigmoid activation function
 makes sure that mask pixels are in \[0, 1\] range.
-
-### Training
-
-The model is trained for 5 epochs.
-
-After 5 epochs, calculated accuracy is about 0.97.
 
 Loss function for the training is basically just a binary crossentropy.
 
@@ -40,6 +32,11 @@ Loss function for the training is basically just a binary crossentropy.
 ---
 
 ## How to use
+
+1. import data into imageRaw and labelRaw folders.
+2. preprocess data.
+3. train model
+4. test model
 
 ### Dependencies
 
@@ -52,7 +49,7 @@ Also, this code should be compatible with Python versions 2.7-3.5.
 
 ### Run main.py
 
-You will see the predicted results of test image in data/membrane/test
+This step will train the model and do the testing.
 
 ### Or follow notebook trainUnet
 
@@ -61,10 +58,6 @@ You will see the predicted results of test image in data/membrane/test
 ### Results
 
 Use the trained model to do segmentation on test images, the result is statisfactory.
-
-![img/0test.png](img/0test.png)
-
-![img/0label.png](img/0label.png)
 
 
 ## About Keras
